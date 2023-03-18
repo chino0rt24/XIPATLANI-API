@@ -5,7 +5,7 @@ const logger = require('morgan');
 
 
 const app = express();
-const port = process.env.PORT || 7000;
+const port = process.env.PORT || 2000;
 //routes
 app.get("/", (req, res) => {
     res.send("Welcome to Xipatlani api")

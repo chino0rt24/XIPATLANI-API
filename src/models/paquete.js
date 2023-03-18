@@ -15,5 +15,5 @@ const paqueteSchema = mongoose.Schema({
     },
 
 
-});
-module.exports =mongoose.model('pack', paqueteSchema);
+},{timestamps:true});
+module.exports =mongoose.model('Package', paqueteSchema);
