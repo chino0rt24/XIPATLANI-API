@@ -12,6 +12,7 @@ const login = async (req, res) => {
         message: 'Usuario logueado',
       });
       } catch (error) {
+        console.log(error);
         res.status(500).json({
           success: false,
           statusCode: 500,
