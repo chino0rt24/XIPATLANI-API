@@ -4,5 +4,5 @@ const  {LoginController}  = require('../controllers');
 
 
 
-router.post("/login",LoginController.login
+router.post("/getlogin",LoginController.login
 );

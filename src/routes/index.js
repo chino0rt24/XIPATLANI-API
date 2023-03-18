@@ -6,6 +6,7 @@ app.use(express.json());
 app.use('/paquete',require("./paquete"));
 app.use('/cobros',require("./cobro"));
 app.use('/customers',require("./customer"));
+app.use('/login',require("./login"))
 
 
 
