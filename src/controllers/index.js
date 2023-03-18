@@ -3,4 +3,5 @@ module.exports = {
     PaqueteController: require("./PaqueteConreoller"),
     CustomerController: require("./CustomerController"),
     CobroController: require("./CobroController"),
+    LoginController: require("./LoginController"),
   };
