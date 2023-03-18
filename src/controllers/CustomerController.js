@@ -1,5 +1,5 @@
 const { findById, updateOne, remove } = require("../models/user");
-const customer = require("../models/");
+const customer = require("../models/customer");
 
 //create user
 const createCustomer = async (req, res) => {
