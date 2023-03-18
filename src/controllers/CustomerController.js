@@ -9,7 +9,7 @@ const createCustomer = async (req, res) => {
     res.json({
       success: true,
       statusCode: 200,
-      data: {customer:newc},
+      // data: {customer:newc},
       path: '/customer/createCustomer',
       message: 'cliente creado',
     });
@@ -29,16 +29,19 @@ const createCustomer = async (req, res) => {
 //get users
 const getCustomers = async (req, res) => {
   try {
-    const customers = await customer.find({}).skip(req.body.skip).limit(req.body.limit);
+    let expresion = new RegExp('^('+req.body.search+').*', "i");
+
+    const customers = await customer.find({$or:[{name:expresion}, {lastname:expresion}]});
     res.json({
       success: true,
       statusCode: 200,
-      data: {customers},
+      data: customers,
       path: '/customers/getCustomers',
       message: 'customers encontrados',
     });
 
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       success: false,
       statusCode: 500,

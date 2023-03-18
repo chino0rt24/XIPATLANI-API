@@ -5,7 +5,7 @@ const cobroSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    idUser: {
+    idCustomer: {
         type: String
     },
     mount: {

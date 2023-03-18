@@ -1,9 +1,17 @@
 const cobro =  require("../models/cobro");
+const customerModel = require("../models/customer");
 
 const createCobro = async(req, res) => {
 try {
-   const newCobro = cobro(req.body.cobro);
-   const cobro = await newCobro.save();
+//    const newCobro = cobro(req.body.cobro);
+//    const cobro = await newCobro.save();
+   const {customer} =  req.body;
+   let expresion = new RegExp('^('+customer.name+').*', "i");
+
+   const dataCustomer = await customerModel.find({$or:[{name:expresion}, {lastname:expresion}]});
+   console.log(customer);
+   console.log(dataCustomer);
+
     res.json({
         path:'createCorbo',
         data:{cobro},
