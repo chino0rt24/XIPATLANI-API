@@ -1,6 +1,6 @@
 const { findById, updateOne, remove } = require("../models/user");
 const customer = require("../models/customer");
-
+const package = require("../models/paquete")
 //create user
 const createCustomer = async (req, res) => {
   try {
@@ -14,6 +14,7 @@ const createCustomer = async (req, res) => {
       message: 'cliente creado',
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       success: false,
       statusCode: 500,
@@ -52,6 +53,46 @@ const getCustomers = async (req, res) => {
 
   }
 };
+
+const getAllCustomers = async (req, res) => {
+  try {
+    const packages = await package.find({});
+    let customers = await customer.find({});
+    console.log(customers);
+    customers = customers.map(customer => {
+      return {
+        name: customer.name + " " + customer.lastname,
+        dateCourt:customer.createdAt,
+        amount: packages[packages.findIndex(item => item.nombre === customer.package )].costo,
+        phone:customer.phone,
+        place: customer.location.place,
+        geo:customer.location.geo.coordinates
+
+      }
+    });
+    console.log(customers);
+
+    res.json({
+      success: true,
+      statusCode: 200,
+      data: customers,
+      path: '/customers/getCustomers',
+      message: 'customers encontrados',
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      statusCode: 500,
+      data: {},
+      path: '/customers/getCstomers',
+      message: 'No se pudo encontrar',
+    });
+
+  }
+};
+
 //usuario especifico
 const getCustomerById = async (req, res) => {
   try {
@@ -126,5 +167,5 @@ module.exports = {
   getCustomerById,
   updateCustomer,
   deleteCustomer,
-
+  getAllCustomers
 }

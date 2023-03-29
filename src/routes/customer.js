@@ -13,5 +13,6 @@ router.post("/getCustomerById",CustomerController.getCustomerById);
   router.post("/getCustomers",CustomerController.getCustomers);
   //eliminar paquete
   router.post("/updateCobro", CustomerController.updateCustomer );
+  router.post("/getAllCustomers", CustomerController.getAllCustomers );
 
 module.exports=router;
