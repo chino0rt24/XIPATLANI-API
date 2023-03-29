@@ -4,7 +4,7 @@ const  {CustomerController}  = require('../controllers');
 
 
 //create paquete
-router.post("/createCobro",CustomerController.createCustomer);
+router.post("/createCustomer",CustomerController.createCustomer);
 //get  paquetes
 router.post("/getCustomerById",CustomerController.getCustomerById);
   //get pack
